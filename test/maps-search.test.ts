@@ -2,6 +2,7 @@ import { config } from "dotenv";
 import { describe } from "@jest/globals";
 import { getPlaceAutocomplete } from "../src/maps-api";
 import { getAutoCompleteDetails } from "../src";
+import { SearchResult } from "../src/searchResult";
 
 config();
 
@@ -27,6 +28,28 @@ describe("Tomtom Places E2E Tests", () => {
       expect(firstRes).toHaveProperty("address.country");
       expect(firstRes).toHaveProperty("address.countryCode");
       expect(firstRes).toHaveProperty("address.freeformAddress");
+    });
+
+    it("should have australian addresses only", async () => {
+      const res = (await getAutoCompleteDetails(
+        "Charlotte Street"
+      )) as SearchResult[];
+      const firstRes = res[0];
+      expect(firstRes).toHaveProperty("placeId");
+      expect(firstRes).toHaveProperty("type");
+      expect(firstRes).toHaveProperty("address.streetNumber");
+      expect(firstRes).toHaveProperty("address.streetName");
+      expect(firstRes).toHaveProperty("address.municipalitySubdivision");
+      expect(firstRes).toHaveProperty("address.municipality");
+      expect(firstRes).toHaveProperty("address.countrySubdivision");
+      expect(firstRes).toHaveProperty("address.postalCode");
+      expect(firstRes).toHaveProperty("address.country");
+      expect(firstRes).toHaveProperty("address.countryCode");
+      expect(firstRes).toHaveProperty("address.freeformAddress");
+
+      expect(
+        res.some((result) => result.address.country !== "Australia")
+      ).toBeFalsy();
     });
 
     it("handles error", async () => {
