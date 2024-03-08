@@ -47,3 +47,6 @@ ehthumbs.db
 # Prettier
 .prettierignore
 .prettiercache
+
+# Test coverage
+/coverage/*
