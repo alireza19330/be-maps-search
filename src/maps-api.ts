@@ -9,6 +9,7 @@ export async function getPlaceAutocomplete(key: string, address: string) {
       params: {
         key,
         limit: 100,
+        countrySet: "AU",
       },
     }
   );
