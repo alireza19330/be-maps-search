@@ -17,11 +17,16 @@ describe("Tomtom Places E2E Tests", () => {
       const res = await getAutoCompleteDetails("Charlotte Street");
       const firstRes = res[0];
       expect(firstRes).toHaveProperty("placeId");
+      expect(firstRes).toHaveProperty("type");
       expect(firstRes).toHaveProperty("address.streetNumber");
-      expect(firstRes).toHaveProperty("address.countryCode");
-      expect(firstRes).toHaveProperty("address.country");
-      expect(firstRes).toHaveProperty("address.freeformAddress");
+      expect(firstRes).toHaveProperty("address.streetName");
+      expect(firstRes).toHaveProperty("address.municipalitySubdivision");
       expect(firstRes).toHaveProperty("address.municipality");
+      expect(firstRes).toHaveProperty("address.countrySubdivision");
+      expect(firstRes).toHaveProperty("address.postalCode");
+      expect(firstRes).toHaveProperty("address.country");
+      expect(firstRes).toHaveProperty("address.countryCode");
+      expect(firstRes).toHaveProperty("address.freeformAddress");
     });
   });
 
