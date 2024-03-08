@@ -28,6 +28,17 @@ describe("Tomtom Places E2E Tests", () => {
       expect(firstRes).toHaveProperty("address.countryCode");
       expect(firstRes).toHaveProperty("address.freeformAddress");
     });
+
+    it("handles error", async () => {
+      const originalConsoleError = console.error;
+      console.error = jest.fn();
+
+      await getAutoCompleteDetails("");
+      expect(console.error).toHaveBeenCalledWith(
+        "Request failed with status code 400"
+      );
+      console.error = originalConsoleError;
+    });
   });
 
   describe("getPlaceAutocomplete", () => {

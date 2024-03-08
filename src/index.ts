@@ -6,7 +6,7 @@ export async function getAutoCompleteDetails(address: any): Promise<any> {
   const apiKey = process.env.TOMTOM_API_KEY;
   // get autocomplete results
   const res = getPlaceAutocomplete(apiKey, address)
-    .then(async (autocompleteResults: TomtomSearchResult[]) => {
+    .then((autocompleteResults: TomtomSearchResult[]) => {
       return autocompleteResults.map((result) => convert(result));
     })
     .catch((error: Error) => {
