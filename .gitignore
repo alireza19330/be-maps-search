@@ -1,0 +1,49 @@
+# Dependency directories
+node_modules/*
+
+# Optional: Yarn integrity file
+.yarn-integrity
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs and databases
+*.log
+*.sqlite
+*.sqlite3
+*.log.*
+npm-debug.log*
+
+# Build output
+/build/*
+/dist/*
+
+# Environment variables
+.env
+
+# Visual Studio Code settings
+.vscode/*
+
+# macOS-specific files
+.AppleDouble
+.DS_Store
+.LSOverride
+
+# Windows-specific files
+Thumbs.db
+ehthumbs.db
+
+# Yeoman generated files
+.yeoman-*
+
+# JetBrains IDEs
+.idea/*
+*.iml
+
+# ESLint
+.eslintcache
+
+# Prettier
+.prettierignore
+.prettiercache
