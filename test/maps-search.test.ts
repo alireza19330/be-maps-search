@@ -3,6 +3,7 @@ import { describe } from "@jest/globals";
 import { getPlaceAutocomplete } from "../src/maps-api";
 import { getAutoCompleteDetails } from "../src";
 import { SearchResult } from "../src/searchResult";
+import { appConfig } from "../src/config";
 
 config();
 
@@ -60,7 +61,7 @@ describe("Tomtom Places E2E Tests", () => {
   describe("getPlaceAutocomplete", () => {
     it("handles no results", async () => {
       const res = await getPlaceAutocomplete(
-        process.env.TOMTOM_API_KEY,
+        appConfig.tomtomApiKey,
         "asfasffasfasafsafs"
       );
       expect(res).toStrictEqual([]);
@@ -68,7 +69,7 @@ describe("Tomtom Places E2E Tests", () => {
 
     it("handles error", async () => {
       expect(
-        getPlaceAutocomplete(process.env.TOMTOM_API_KEY, "")
+        getPlaceAutocomplete(appConfig.tomtomApiKey, "")
       ).rejects.toThrow();
     });
   });

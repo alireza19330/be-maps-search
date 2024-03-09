@@ -1,11 +1,11 @@
+import { appConfig } from "./config";
 import { getPlaceAutocomplete } from "./maps-api";
 import { SearchResult } from "./searchResult";
 import { TomtomSearchResult } from "./tomtomSearchResult";
 
 export async function getAutoCompleteDetails(address: any): Promise<any> {
-  const apiKey = process.env.TOMTOM_API_KEY;
   // get autocomplete results
-  const res = getPlaceAutocomplete(apiKey, address).then(
+  const res = getPlaceAutocomplete(appConfig.tomtomApiKey, address).then(
     (autocompleteResults: TomtomSearchResult[]) => {
       return autocompleteResults.map((result) => convert(result));
     }
