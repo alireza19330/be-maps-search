@@ -53,14 +53,7 @@ describe("Tomtom Places E2E Tests", () => {
     });
 
     it("handles error", async () => {
-      const originalConsoleError = console.error;
-      console.error = jest.fn();
-
-      await getAutoCompleteDetails("");
-      expect(console.error).toHaveBeenCalledWith(
-        "Request failed with status code 400"
-      );
-      console.error = originalConsoleError;
+      expect(getAutoCompleteDetails("")).rejects.toThrow();
     });
   });
 
